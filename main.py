@@ -18,4 +18,4 @@ def login():
     return render_template('results.html', data=scores.getScores(request.form['username'], request.form['password']))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(port=80)
