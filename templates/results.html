@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Your score:<br><strong>{{ data['M']['score'] + data['CR']['score'] + data['W']['score'] }}</strong></h2>
+<div class="row">
+  <div class="col-md-4"><h3>Reading: <strong>{{ data['CR']['score'] }}</strong></h3></div>
+  <div class="col-md-4"><h3>Math: <strong>{{ data['M']['score'] }}</strong></h3></div>
+  <div class="col-md-4"><h3>Writing: <strong>{{ data['W']['score'] }}</strong></h3></div>
+</div>
+<table class="table table-striped table-bordered">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Correct</th>
+      <th>Incorrect</th>
+      <th>Omitted</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for score in data %}
+  <tr>
+    <th>{{ 'Math' if score == 'M' else ('Reading' if score == 'CR' else 'Writing') }}</th>
+    <td>{{ data[score]['correct'] }}</td>
+    <td>{{ data[score]['incorrect'] }}</td>
+    <td>{{ data[score]['omitted'] }}</td>
+    <td>{{ data[score]['total'] }}</td>
+  </tr>
+  {% endfor %}
+  <tr>
+    <th>Total</th>
+    <td>{{ data['M']['correct'] + data['CR']['correct'] + data['W']['correct'] }}</td>
+    <td>{{ data['M']['incorrect'] + data['CR']['incorrect'] + data['W']['incorrect'] }}</td>
+    <td>{{ data['M']['omitted'] + data['CR']['omitted'] + data['W']['omitted'] }}</td>
+    <td>{{ data['M']['total'] + data['CR']['total'] + data['W']['total'] }}</td>
+  </tr>
+  </tbody>
+</table>
+<div class="well breakdown">
+  <h4>Calculation:</h4>
+  <p>
+    <strong>Reading:</strong><br/>
+    <span class="good">{{ data['CR']['correct'] }}</span> -
+    round(<span class="bad">{{ data['CR']['incorrect'] }}</span> / 4) =
+    {{ data['CR']['raw'] }} -> <span class="highlight">{{ data['CR']['score'] }}</span>
+  </p>
+  <p>
+    <strong>Math:</strong><br/>
+    {{ data['M']['free'] }} of your incorrect math answers were free response<br/>
+    <span class="good">{{ data['M']['correct'] }}</span> -
+    round([
+    <span class="bad">{{ data['M']['incorrect'] }}</span> -
+    <span class="good">{{ data['M']['free'] }}</span>]
+    / 4) =
+    {{ data['M']['raw'] }} -> <span class="highlight">{{ data['M']['score'] }}</span>
+  </p>
+  <p>
+    <strong>Writing:</strong><br/>
+    <span class="good">{{ data['W']['correct'] }}</span> -
+    round(<span class="bad">{{ data['W']['incorrect'] }}</span> / 4) =
+    {{ data['W']['raw'] }} -> <span class="highlight">{{ data['W']['score'] }}</span>
+  </p>
+  <p>
+    <strong>Total:</strong><br/>
+    <span class="good">{{ data['CR']['score'] }}</span> +
+    <span class="good">{{ data['M']['score'] }}</span> +
+    <span class="good">{{ data['W']['score'] }}</span> =
+    <span class="highlight">{{ data['M']['score'] + data['CR']['score'] + data['W']['score'] }}</span>
+  </p>
+</div>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="login">
+  <h3 class="title">CollegeBoard Login</h3>
+  <form role="form" method="POST" action="scores">
+
+    <!-- Username -->
+    <div class="form-group">
+      <label for="username">Username</label>
+      <div>
+        <input type="text" class="form-control" id="username" name="username" placeholder="CollegeBoard username">
+      </div>
+    </div>
+
+    <!-- Password -->
+    <div class="form-group">
+      <label for="password">Password</label>
+      <div>
+        <input type="password" class="form-control" id="password"  name="password" placeholder="CollegeBoard password">
+      </div>
+    </div>
+
+    <!-- Submit -->
+    <div class="form-group">
+      <div>
+        <button type="submit" class="btn btn-success">Get My Scores</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="alert alert-info info">
+  <strong>None of your information will be stored</strong><br/>
+  It goes directly to CollegeBoard
+</div>
+
+{% endblock %}

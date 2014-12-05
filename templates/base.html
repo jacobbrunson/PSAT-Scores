@@ -1,0 +1,15 @@
+<!doctype html>
+<html>
+<head>
+  <title>Jacob's PSAT Score Checker</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <h1>Jacob's PSAT Score Calculator</h1>
+  <div class="container">
+    {% block content %}{% endblock %}
+  </div>
+</body>
+</html>
