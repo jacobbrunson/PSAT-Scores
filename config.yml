@@ -1,0 +1,69 @@
+app:
+  secret_key: supersecret
+
+server:
+  host: 0.0.0.0
+  port: 80
+
+collegeboard:
+  login_url: https://quickstart.collegeboard.org/posweb/login.jsp
+  base_url: https://quickstart.collegeboard.org/posweb/questionInfoNewAction.do?testYear=2014&skillCd=%s&questionNbr=%i
+
+messages:
+  credentials: Invalid username or password
+  unavailable: Your PSAT scores are unavailable. This method only works for select people. You require an online access code
+
+scoring:
+  conversion_index: -2
+  conversion:
+    - [20, 20, 20]
+    - [21, 23, 20]
+    - [22, 25, 22]
+    - [24, 26, 24]
+    - [26, 28, 26]
+    - [28, 30, 28]
+    - [30, 32, 30]
+    - [31, 33, 32]
+    - [32, 35, 33]
+    - [33, 36, 34]
+    - [35, 37, 35]
+    - [36, 38, 36]
+    - [37, 39, 37]
+    - [38, 40, 38]
+    - [39, 42, 39]
+    - [40, 42, 40]
+    - [41, 43, 41]
+    - [42, 45, 42]
+    - [43, 46, 43]
+    - [44, 47, 44]
+    - [45, 48, 45]
+    - [46, 49, 47]
+    - [46, 50, 48]
+    - [47, 51, 48]
+    - [48, 53, 49]
+    - [49, 54, 51]
+    - [50, 56, 53]
+    - [51, 57, 54]
+    - [51, 59, 55]
+    - [52, 60, 56]
+    - [53, 62, 57]
+    - [54, 64, 59]
+    - [55, 65, 61]
+    - [56, 67, 62]
+    - [57, 68, 63]
+    - [58, 70, 65]
+    - [59, 71, 67]
+    - [60, 73, 69]
+    - [61, 75, 70]
+    - [62, 77, 71]
+    - [64, 80, 76]
+    - [65, 80, 80]
+    - [66, 80, 80]
+    - [67, 80, 80]
+    - [70, 80, 80]
+    - [71, 80, 80]
+    - [73, 80, 80]
+    - [75, 80, 80]
+    - [78, 80, 80]
+    - [80, 80, 80]
+    - [80, 80, 80]
