@@ -15,10 +15,12 @@ def main():
 @app.route('/scores', methods=['POST'])
 def login():
     data = scores.getScores(request.form['username'], request.form['password'])
-    if data is None:
+    if data is -1:
         flash('Invalid username or password')
+    elif data is -2:
+        flash("Your PSAT scores are unavailable. This method only works for select people.")
         return redirect(url_for('main'))
     return render_template('results.html', data=data)
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+    app.run(host='0.0.0.0', port=80, debug=True)

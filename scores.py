@@ -12,7 +12,7 @@ def getScores(username, password):
     err = BeautifulSoup(login.text).find('p', {'class': 'error'})
 
     if err is not None:
-        return None
+        return -1
 
     session = login.cookies
 
@@ -25,7 +25,11 @@ def getScores(username, password):
 
 
     def worker(scores, s, i):
-        result = BeautifulSoup(requests.get(base % (s, i), cookies=session, headers=headers).text).body.div.div.p.strong.text[22:]
+        result = BeautifulSoup(requests.get(base % (s, i), cookies=session, headers=headers).text).body.div.div
+        if result is None:
+            count.value = 9999
+            return
+        result = result.p.strong.text[22:]
         lock.acquire()
         if result == 'correctly':
             scores[s][1].value += 1
@@ -47,6 +51,9 @@ def getScores(username, password):
 
     while count.value < scores['M'][0] + scores['CR'][0] + scores['W'][0]:
         pass
+
+    if count.value > 200:
+        return -2
 
     data = {}
     for s in scores:
