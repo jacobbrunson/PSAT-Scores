@@ -31,6 +31,7 @@ YAML is used for configuration. You may find these options in `config.yml`
 
 + `app.secret_key` Key used to encrypt session data. Not really important because no sensitive data is stored in the session
 + `app.debug` Should the app be run in debug mode?
++ `app.logging` Should the app log messages?
 
 
 + `server.host` Hostname that the server will run on

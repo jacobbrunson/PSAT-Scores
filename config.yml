@@ -1,6 +1,7 @@
 app:
   secret_key: supersecret
   debug: false
+  logging: true
 
 server:
   host: 0.0.0.0

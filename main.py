@@ -11,6 +11,13 @@ template_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templat
 app = Flask(__name__, template_folder=template_dir)
 app.secret_key = config['app']['secret_key']
 
+if config['app']['logging']:
+    import logging
+    file_handler = logging.FileHandler(filename='log.txt')
+    file_handler.setLevel(logging.INFO)
+    app.logger.addHandler(file_handler)
+
+
 @app.route('/')
 def main():
     return render_template('login.html')
