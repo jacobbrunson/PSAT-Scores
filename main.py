@@ -5,15 +5,17 @@ from flask import Flask, request, render_template, redirect, url_for, flash
 
 import scores
 
-config = yaml.load(file('config.yml', 'r'))
+def path(name):
+    return os.path.join(os.path.dirname(os.path.abspath(__file__)), name)
 
-template_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
-app = Flask(__name__, template_folder=template_dir)
+config = yaml.load(file(path('config.yml'), 'r'))
+
+app = Flask(__name__, template_folder=path('templates'))
 app.secret_key = config['app']['secret_key']
 
 if config['app']['logging']:
     import logging
-    file_handler = logging.FileHandler(filename='log.txt')
+    file_handler = logging.FileHandler(filename=path('log.txt'))
     file_handler.setLevel(logging.INFO)
     app.logger.addHandler(file_handler)
 
