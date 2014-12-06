@@ -9,9 +9,9 @@ def getScores(username, password):
 
     login = requests.post('https://quickstart.collegeboard.org/posweb/login.jsp', params=credentials, headers=headers)
 
-    err = BeautifulSoup(login.text).find('p', {'class': 'error'})
 
-    if err is not None:
+
+    if 'class="error"' in login.text:
         return -1
 
     session = login.cookies
