@@ -39,24 +39,22 @@
   <h4>Calculation:</h4>
   <p>
     <strong>Reading:</strong><br/>
-    <span class="good">{{ data['CR']['correct'] }}</span> -
-    round(<span class="bad">{{ data['CR']['incorrect'] }}</span> / 4) =
+    round(<span class="good">{{ data['CR']['correct'] }}</span> -
+    <span class="bad">{{ data['CR']['incorrect'] }}</span>/4) =
     {{ data['CR']['raw'] }} -> <span class="highlight">{{ data['CR']['score'] }}</span>
   </p>
   <p>
     <strong>Math:</strong><br/>
     {{ data['M']['free'] }} of your incorrect math answers were free response<br/>
-    <span class="good">{{ data['M']['correct'] }}</span> -
-    round([
-    <span class="bad">{{ data['M']['incorrect'] }}</span> -
-    <span class="good">{{ data['M']['free'] }}</span>]
-    / 4) =
+    round(<span class="good">{{ data['M']['correct'] }}</span> -
+    [<span class="bad">{{ data['M']['incorrect'] }}</span> -
+    <span class="good">{{ data['M']['free'] }}</span>]/4) =
     {{ data['M']['raw'] }} -> <span class="highlight">{{ data['M']['score'] }}</span>
   </p>
   <p>
     <strong>Writing:</strong><br/>
-    <span class="good">{{ data['W']['correct'] }}</span> -
-    round(<span class="bad">{{ data['W']['incorrect'] }}</span> / 4) =
+    round(<span class="good">{{ data['W']['correct'] }}</span> -
+    <span class="bad">{{ data['W']['incorrect'] }}</span>/4) =
     {{ data['W']['raw'] }} -> <span class="highlight">{{ data['W']['score'] }}</span>
   </p>
   <p>

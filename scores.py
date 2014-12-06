@@ -53,9 +53,9 @@ def getScores(username, password):
         }
     data['M']['free'] = math.value
 
-    data['M']['raw'] = data['M']['correct'] - int(round((data['M']['incorrect'] - math.value) / 4.0))
-    data['CR']['raw'] = data['CR']['correct'] - int(round(data['CR']['incorrect'] / 4.0))
-    data['W']['raw'] = data['W']['correct'] - int(round(data['W']['incorrect'] / 4.0))
+    data['M']['raw'] = int(round(data['M']['correct'] - (data['M']['incorrect'] - math.value) / 4.0))
+    data['CR']['raw'] = int(round(data['CR']['correct'] - data['CR']['incorrect'] / 4.0))
+    data['W']['raw'] = int(round(data['W']['correct'] - data['W']['incorrect'] / 4.0))
 
 
     data['M']['score'] = conversion[data['M']['raw'] + 2][1]
