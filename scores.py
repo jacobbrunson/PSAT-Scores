@@ -7,16 +7,21 @@ def getScores(username, password):
     headers = {'User-Agent':'Mozilla/5.0 (Windows; U; Windows NT 5.0; en-US; rv:1.7.12) Gecko/20050915 Firefox/1.0.7'}
     credentials = {'username': username, 'password': password}
 
-    login = requests.post("https://quickstart.collegeboard.org/posweb/login.jsp", params=credentials, headers=headers)
+    login = requests.post('https://quickstart.collegeboard.org/posweb/login.jsp', params=credentials, headers=headers)
+
+    err = BeautifulSoup(login.text).find('p', {'class': 'error'})
+
+    if err is not None:
+        return None
+
     session = login.cookies
 
     base = 'https://quickstart.collegeboard.org/posweb/questionInfoNewAction.do?testYear=2014&skillCd=%s&questionNbr=%i'
 
-
     lock = Lock()
-    scores = {'M': [38, Value("i", 0), Value("i", 0)], 'CR': [48, Value("i", 0), Value("i", 0)], 'W': [39, Value("i", 0), Value("i", 0)]}
-    count = Value("i", 0)
-    math = Value("i", 0)
+    scores = {'M': [38, Value('i', 0), Value('i', 0)], 'CR': [48, Value('i', 0), Value('i', 0)], 'W': [39, Value('i', 0), Value('i', 0)]}
+    count = Value('i', 0)
+    math = Value('i', 0)
 
 
     def worker(scores, s, i):

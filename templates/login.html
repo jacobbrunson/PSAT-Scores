@@ -29,9 +29,16 @@
   </form>
 </div>
 
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<div class="alert alert-danger info">
+  <strong>{{ messages[0] }}</strong>
+</div>
+{% else %}
 <div class="alert alert-info info">
   <strong>None of your information will be stored</strong><br/>
   It goes directly to CollegeBoard
 </div>
-
+{% endif %}
+{% endwith %}
 {% endblock %}
