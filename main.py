@@ -38,4 +38,10 @@ def login():
     return render_template('results.html', data=data)
 
 if __name__ == '__main__':
-    app.run(host=config['server']['host'], port=config['server']['port'], debug=config['app']['debug'])
+    if not config['server']['ssl']['enabled']:
+        app.run(host=config['server']['host'], port=config['server']['port'], debug=config['app']['debug'])
+    else:
+        import ssl
+        context = ssl.SSLContext(ssl.PROTOCOL_TLSv1_2)
+        context.load_cert_chain(path(config['server']['ssl']['certificate']), path(config['server']['ssl']['private_key']))
+        app.run(host=config['server']['host'], port=config['server']['port'], debug=config['app']['debug'], ssl_context=context)
