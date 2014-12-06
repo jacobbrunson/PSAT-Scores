@@ -20,6 +20,7 @@ This service allows you to get your score without waiting for an access code fro
 + Flask (http://flask.pocoo.org)
 + Beautiful Soup 4 (http://crummy.com/software/BeautifulSoup/)
 + Requests (http://python-requeÂsts.org)
++ PyYaml (http://pyyaml.org/)
 
 ###Usage
 
