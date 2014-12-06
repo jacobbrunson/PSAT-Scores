@@ -22,8 +22,10 @@ if config['app']['logging']:
 def main():
     return render_template('login.html')
 
-@app.route('/scores', methods=['POST'])
+@app.route('/scores', methods=['GET', 'POST'])
 def login():
+    if request.method == 'GET':
+        return redirect(url_for('main'))
     data = scores.getScores(request.form['username'], request.form['password'], config)
     if data == -1:
         flash(config['messages']['credentials'])
