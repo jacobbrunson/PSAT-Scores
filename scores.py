@@ -25,11 +25,11 @@ def getScores(username, password, config):
 
 
     def worker(scores, s, i):
-        result = BeautifulSoup(requests.get(base % (s, i), cookies=session, headers=headers).text).body.div.div
+        result = BeautifulSoup(requests.get(base % (s, i), cookies=session, headers=headers).text).body.div.div.p
         if result is None:
             count.value = 9999
             return
-        result = result.p.strong.text[22:]
+        result = result.strong.text[22:]
         lock.acquire()
         if result == 'correctly':
             scores[s][1].value += 1
