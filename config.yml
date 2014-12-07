@@ -6,10 +6,6 @@ app:
 server:
   host: 0.0.0.0
   port: 80
-  ssl:
-    enabled: false
-    private_key: ssl.key
-    certificate: ssl.crt
 
 collegeboard:
   login_url: https://quickstart.collegeboard.org/posweb/login.jsp
