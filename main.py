@@ -37,5 +37,15 @@ def login():
         return redirect(url_for('main'))
     return render_template('results.html', data=data)
 
+@app.errorhandler(500)
+def internal_error(error):
+    flash(config['messages']['error'])
+    return redirect(url_for('main'))
+
+@app.errorhandler(404)
+def not_found(error):
+    flash(config['messages']['notfound'])
+    return redirect(url_for('main'))
+
 if __name__ == '__main__':
     app.run(host=config['server']['host'], port=config['server']['port'], debug=config['app']['debug'])

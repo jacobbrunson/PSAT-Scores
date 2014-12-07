@@ -14,6 +14,8 @@ collegeboard:
 messages:
   credentials: Invalid username or password
   unavailable: Your PSAT scores are unavailable. This method only works for select people. You require an online access code
+  notfound: The page you requested does not exist
+  error: An unknown error occured. Please report what you were doing to cause this
 
 scoring:
   conversion_index: -2
