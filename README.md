@@ -1,32 +1,32 @@
-#Jacob's PSAT Score Checker
+# Jacob's PSAT Score Checker
 
-Live version: http://scores.jacobbrunson.me
+Live version: http://scores.jacobbrunson.me (link is now down)
 
-##What?
+## What?
 For every question on the PSAT, CollegeBoard has a corresponding web page that explains the question, and more importantly, tells you if you answered the question correctly.
 
 This automatically logs into your CollegeBoard account, parses the (120+) pages for every question, and uses the information on them to calculate your score __before its available on CollegeBoard.__
 
-##Why?
+## Why?
 Many times, PSAT scores are available online, but schools don't receive online access codes for students to view them.
 
 This service allows you to get your score without waiting for an access code from CollegeBoard.
 
 
-##Installation
+## Installation
 
-###Dependencies
+### Dependencies
 
 + Flask (http://flask.pocoo.org)
 + Beautiful Soup 4 (http://crummy.com/software/BeautifulSoup/)
 + Requests (http://python-requests.org)
 + PyYaml (http://pyyaml.org/)
 
-###Usage
+### Usage
 
 Run `python main.py` in the project directory
 
-###Configuration
+### Configuration
 
 YAML is used for configuration. You may find these options in `config.yml`
 
